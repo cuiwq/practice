@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+//        计数法........................................
+//        var arr = [1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1, 3, 4, 5, 5, 6, 4, 7,3,2,1,2,3,2,1]
+        //通过处理，得到一个新的数组[1,2,3,4,5,6,7]
+//
+        //1 创建一个数组用于保存结果
+//        var resultArr = [arr[0]];
+//        var count;
+
+        //2 遍历arr取出元素
+//        for (var i = 1; i < arr.length; i++) {
+            //3 比較原则：arr中的某个元素的值如果在resultArr中没有出现过，进行放入即可
+//            count = 0;
+
+
+            //遍历resultArr
+//            for (var j = 0; j < resultArr.length; j++) {
+//                //4 使用arr[i]和resultArr[j]进行比較;
+//                //需要保证arr[i]和resultArr中的任何一个元素均不相等才可以进行放入
+//                //使用计数法，记录resultArr中与arr[i]相等的元素的个数，如果个数为0，进行放入即可
+//                if (arr[i] == resultArr[j]) {
+//                    count++;
+//                }
+//            }
+//
+//            //验证count的值
+//            if (count == 0) {
+//                resultArr[resultArr.length] = arr[i];
+//            }
+//
+//        }
+//        console.log(resultArr);
+
+//        假设成立法.............................................
+//var arr = [1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1, 3, 4, 5, 5, 6, 4, 7, 3, 2, 1, 2, 3, 2, 1]
+//通过处理，得到一个新的数组[1,2,3,4,5,6,7]
+
+//1 创建一个数组用于保存结果
+//var resultArr = [arr[0]];
+//var flag;
+//
+////2 遍历arr取出元素
+//for (var i = 1; i < arr.length; i++) {
+//    //3 比較原则：arr中的某个元素的值如果在resultArr中没有出现过，进行放入即可
+//    flag = true;  //假设当前取出的arr[i]可以放入到resultArr中
+//
+//    //遍历resultArr
+//    for (var j = 0; j < resultArr.length; j++) {
+//        //4 使用arr[i]和resultArr[j]进行比較;
+//        //需要保证arr[i]和resultArr中的任何一个元素均不相等才可以进行放入
+//
+//        //如果resultArr中已经有arr[i]这个值，设置假设为false
+//        if (arr[i] == resultArr[j]) {
+//            flag = false;
+//            break;
+//        }
+//
+//    }
+    //对flag的进行验证，如果值为true，设置放入即可
+    //if(flag == true){
+//    if (flag) {
+//        resultArr[resultArr.length] = arr[i];
+//    }
+//}
+//console.log(resultArr);
+//.............................................
+
+//循环特性法....................................
+//var arr = [1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1, 3, 4, 5, 5, 6, 4, 7, 3, 2, 1, 2, 3, 2, 1]
+//通过处理，得到一个新的数组[1,2,3,4,5,6,7]
+
+//1 创建一个数组用于保存结果
+//var resultArr = [arr[0]];
+//
+////2 遍历arr取出元素
+//for (var i = 1; i < arr.length; i++) {
+//    //3 比較原则：arr中的某个元素的值如果在resultArr中没有出现过，进行放入即可
+//
+//    //遍历resultArr
+//    for (var j = 0; j < resultArr.length; j++) {
+//        //4 使用arr[i]和resultArr[j]进行比較;
+//        //需要保证arr[i]和resultArr中的任何一个元素均不相等才可以进行放入
+//
+//        if (arr[i] == resultArr[j]) {
+//            break;
+//        }
+//    }
+
+    //判断内循环的循环变量值与resultArr.length的关系
+    //如果j和resultArr.length相等，说明循环正常执行完毕，意味着没有执行过跳出
+    //说明arr[i] == resultArr[j]没有成立过，可以放入
+//    if (j == resultArr.length) {
+//        resultArr[resultArr.length] = arr[i];
+//    }
+//}
+//console.log(resultArr);
+////...............................................................
+
+//函数包装..............................
+// 1-100的和的功能，并将其封装在一个函数中，进行多次调用
+//1 根据需求完成具体的功能
+//    var sum = 0;
+//    for (var i = 1; i <= 100; i++) {
+//      sum += i;
+//    }
+//    console.log(sum);
+
+//2 书写一个函数体，将功能放入进去
+//function getSum() {
+//    var sum = 0;
+//    for (var i = 1; i <= 100; i++) {
+//        sum += i;
+//    }
+//    console.log(sum);
+//}
+
+//3 哪里需要哪里调
+//getSum();
+//.......................................
+
+//        函数的基本使用..............................
+// 10-36间所有整数的和
+// 1 当我们拿到一个不具体的需求时，先将需求具体话 (10-36之间所有数的和) 将具体功能实现
+// var sum = 0;
+// for (var i = 10; i <= 36; i++) {
+//  sum += i;
+// }
+// console.log(sum);
+
+//2 书写一个函数体，将功能放入
+//  function getSum() {
+//          var sum = 0;
+//          for (var i = 1; i <36; i++) {
+//            sum += i;
+//          }
+//          console.log(sum);
+//        }
+//3 将刚才设置的具体需求值进行修改(20-57之间所有数的和)
+//找到需要变化的值，将需要更改的位置，设置为形参即可
+//function getSum(num1,num2) {
+//    var sum = 0;
+//    for (var i = num1; i <= num2; i++) {
+//        sum += i;
+//    }
+//    console.log(sum);
+}
+
+//4 哪里需要哪里调
+//getSum(10,20);
+//getSum(1,36);
+
+
+//练习：  Math.PI
+//计算任意半径圆的面积 Math.PI * 半径 * 半径
+//1 将需求具体化 假设半径为5
+//var r = 5;
+//var mianJi = Math.PI * r * r;
+//console.log(mianJi);
+
+//2 使用函数封装
+//    function getMJ() {
+//      var r = 5;
+//      var mianJi = Math.PI * r * r;
+//      console.log(mianJi);
+//    }
+
+//3 更改具体需求，找到参数的位置
+//    function getMJ(r) {
+//      var mianJi = Math.PI * r * r;
+//      console.log(mianJi);
+//    }
+//
+//4 哪里需要哪里调
+//getMJ(1);
+//getMJ(2);
+// ....       ................................................
+
+//计算任意两个数的大小，返回大的值。
+//function getMax2(num1, num2) {
+//    //var max = num1 > num2?num1:num2;
+//    //return max;
+//    //化简后的代码：
+//    return num1 > num2 ? num1 : num2;
+//}
+//
+////计算任意3个数的大小，返回最大值。
+//function getMax3(n1, n2, n3) {
+//    //1 计算前两个数的最大值
+//    var max = getMax2(n1, n2);
+//    //2 使用max跟n3计算最大值
+//    return getMax2(max, n3);
+//}
+//
+//console.log(getMax3(101, 20, 30));
+
+//.........................................
+
+
+//3.1 构造函数创建方式：
+//var banChe = new Object();
+//
+////4 给对象添加属性和方法
+//banChe.color = "暗金黄色";
+//banChe.lunCount = 8;
+//banChe.name = "黑马程序员";
+//
+////注意：方法中保存的值为函数，表示动态的行为描述。
+//banChe.drive = function () {
+//    console.log("上下班接送员工");
+//};
+//
+//banChe.biaoChe = function () {
+//    console.log("我在秋名山等你");
+//};
+
+//寻找身边的对象，并使用代码对其进行描述。
+
+//方法其实也是属性，只不过内部保存的值为函数，所以起了一个特殊的名字用于区分。
+//console.log(banChe.name);
+//banChe.biaoChe();
+
+//        ..............................................
+
+//function createHua(name, color, hasCi, hasXiangWei) {
+//    //使用对象来描述一个玫瑰花
+//    //1 创建对象
+//    var muDan = new Object();
+//    //2 添加属性和方法
+//    muDan.name = name;
+//    muDan.color = color;
+//    muDan.hasCi = hasCi;
+//    muDan.hasXiangWei = hasXiangWei;
+//
+//    muDan.kaiHua = function () {
+//        console.log("一年四季都开，可以送给心爱的人");
+//    };
+//
+//    //3 设置返回值
+//    return muDan;
+//}
+
+//使用函数创建对象，可以使对象的创建操作变简单
+//var muDan = createHua("牡丹", "红色", false, true);
+//var rose = createHua("玫瑰", "黄色", true, true);
+////得到两个对象，两个对象中的属性值为不同的值
+//console.log(muDan);
+//console.log(rose);
+
+//        ........................................
+
+
+//function CreateHua(color, hasCi) {
+//    //new的第三个作用，将函数内的this指向了创建的对象
+//    //只需要给this设置属性方法即可
+//    this.color = color;
+//    this.hasCi = hasCi;
+//    this.kaiHua = function () {
+//        console.log("我开花了，很好看");
+//    }
+//}
+////使用createHua函数创建一个对象并传参设置属性值
+//var muDan = new CreateHua("红色", false);
+//console.log(muDan);//访问属性
+//muDan.kaiHua();//调用方法
+
+//        ........................................
+
+//this的使用方式
+//var zhangSan = new Object();
+//zhangSan.name = "张三";
+//zhangSan.sayHi = sayHi;
+//
+//var liSi = new Object();
+//liSi.name = "李四";
+//liSi.sayHi = sayHi;
+//
+//function sayHi() {
+//    console.log("你好，我是" + this.name);
+//}
+//
+//zhangSan.sayHi();
+//liSi.sayHi();
+
+//.............................................
+
+//面量创建方式：
+
+//键值对集合：键-属性名  值-属性值   键：值
+//var obj = {
+//    name: "张三",
+//    age: 18,
+//    sayHi: function () {
+//        console.log("我是张三");
+//    }
+//};
+////    obj.height = 180;
+//console.log(obj.name);
+//obj.sayHi();
+
+//        ......................................................
+
+//   排成绩...........................
+//优(100-90) 良(80-90) 及格(60-80) 不及格(0-60)
+//    var chengJi = 95;
+
+//1 考虑到规则以外的值，进行过滤
+// 值大于100或值小于0，均不符合规则
+//if (chengJi > 100 || chengJi < 0) {
+//    alert("请检测成绩的值，不合法");
+//} else if (chengJi >= 90) {
+//    //由于if的条件已经将大于100和小于0的值过滤掉了，到这个位置判断时，只能是1-100之间的值
+//    alert("成绩优秀");
+//} else if (chengJi >= 80) {
+//    alert("成绩良");
+//} else if (chengJi >= 60) {
+//    alert("成绩及格");
+//} else {
+//    alert("成绩不及格");
+//}
+//........................................
+
+//两个数的最大数
+//    var num1 = 270, num2 = 270;
+//    //分析：情况为两种，num1大或者num2大
+//    if (num1 > num2) {
+//      alert(num1);
+//    } else {
+//      alert(num2);
+//    }
+
+
+//判断一个数是偶数还是奇数
+//奇数和偶数的区别在于奇数不可以被2整除(num%2!=0),偶数可以被2整除(num%2==0)
+//var num = 0;
+//if (num % 2 == 0) {
+//  alert("是偶数");
+//} else {
+//  alert("是奇数");
+//}
+
+//        ..............................................................
+
+
+//根据一个数值，判断今天是星期几
+//var num = 6;
+//switch (num) {
+//    case 1:
+//        alert("星期一");
+//        break;
+//    case 2:
+//        alert("星期二");
+//        break;
+//    case 3:
+//        alert("星期三");
+//        break;
+//    case 4:
+//        alert("星期四");
+//        break;
+//    case 5:
+//        alert("星期五");
+//        break;
+//    case 6:
+//        alert("星期六");
+//        break;
+//    case 7:
+//        alert("星期日");
+//        break;
+//}
+//        ........................................................
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
